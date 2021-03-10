@@ -45,7 +45,7 @@ public class persistenceFile extends HttpServlet{
      throws ServletException, IOException
   {
      String name = request.getParameter(Data.NAME.name());
-     String class = request.getParameter(Data.CLASS.name());
+     String className = request.getParameter(Data.CLASSNAME.name());
      String age = request.getParameter(Data.AGE.name());
      
      String error = "";
@@ -54,9 +54,9 @@ public class persistenceFile extends HttpServlet{
        name = "";
      }
     
-     if(class == null){
-        error= "<li>Class is required</li>";
-        class = "";
+     if(className == null){
+        error= "<li>Class Name is required</li>";
+        className = "";
      }
 
      if(age == null){
@@ -93,7 +93,7 @@ public class persistenceFile extends HttpServlet{
        PrintTail(out);
      }else{
        PrintHead(out);
-       PrintBody(out, name, class, age, error);
+       PrintBody(out, name, className, age, error);
        PrintTail(out);
      }
   }
@@ -133,7 +133,7 @@ public class persistenceFile extends HttpServlet{
   /** *****************************************************
    *  Prints the <BODY> of the HTML page
   ********************************************************* */
-  private void PrintBody (PrintWriter out, String name, String class, String age, String error){
+  private void PrintBody (PrintWriter out, String name, String className, String age, String error){
      out.println("<body onLoad=\"setFocus()\">");
      out.println("<p>");
      out.println("A simple example that demonstrates how to persist data to a file");
@@ -157,8 +157,8 @@ public class persistenceFile extends HttpServlet{
      out.println("  </tr>");
      out.println("  <tr>");
      out.println("   <td>Name:</td>");
-     out.println("   <td><input type=\"text\" name=\""+Data.CLASS.name()
-      +"\" value=\""+class+"\" size=30 required></td>");
+     out.println("   <td><input type=\"text\" name=\""+Data.CLASSNAME.name()
+      +"\" value=\""+className+"\" size=30 required></td>");
      out.println("  </tr>");
      out.println("  <tr>");
      out.println("   <td>Age:</td>");
