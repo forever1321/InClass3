@@ -46,7 +46,6 @@ public class persistenceFile extends HttpServlet{
   {
      String name = request.getParameter(Data.NAME.name());
      String age = request.getParameter(Data.AGE.name());
-     String class = request.getParamter(Data.CLASS.name());
 
      String error = "";
      if(name == null){
@@ -128,7 +127,7 @@ public class persistenceFile extends HttpServlet{
   /** *****************************************************
    *  Prints the <BODY> of the HTML page
   ********************************************************* */
-  private void PrintBody (PrintWriter out, String name, String class, String age, String error){
+  private void PrintBody (PrintWriter out, String name, String age, String error){
      out.println("<body onLoad=\"setFocus()\">");
      out.println("<p>");
      out.println("A simple example that demonstrates how to persist data to a file");
@@ -149,11 +148,6 @@ public class persistenceFile extends HttpServlet{
      out.println("   <td>Name:</td>");
      out.println("   <td><input type=\"text\" name=\""+Data.NAME.name()
       +"\" value=\""+name+"\" size=30 required></td>");
-     out.println("  </tr>");
-     out.println("  <tr>");
-     out.println("   <td>Class:</td>");
-     out.println("   <td><input type=\"text\" name=\""+Data.CLASS.name()
-      +"\" value=\""+class+"\" size=30 required></td>");
      out.println("  </tr>");
      out.println("  <tr>");
      out.println("   <td>Age:</td>");
