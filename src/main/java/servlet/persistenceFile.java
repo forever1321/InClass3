@@ -191,6 +191,7 @@ public class persistenceFile extends HttpServlet{
     try {
         out.println("  <tr>");
         out.println("   <th>Name</th>");
+        out.println("   <th>ClassName</th>");
         out.println("   <th>Age</th>");
         out.println("  </tr>");
         File file = new File(resourcePath);
