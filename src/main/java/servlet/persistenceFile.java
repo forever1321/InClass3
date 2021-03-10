@@ -156,7 +156,7 @@ public class persistenceFile extends HttpServlet{
       +"\" value=\""+name+"\" size=30 required></td>");
      out.println("  </tr>");
      out.println("  <tr>");
-     out.println("   <td>Name:</td>");
+     out.println("   <td>ClassName:</td>");
      out.println("   <td><input type=\"text\" name=\""+Data.CLASSNAME.name()
       +"\" value=\""+className+"\" size=30 required></td>");
      out.println("  </tr>");
