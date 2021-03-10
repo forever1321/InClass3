@@ -87,7 +87,7 @@ public class persistenceFile extends HttpServlet{
        PrintTail(out);
      }else{
        PrintHead(out);
-       PrintBody(out, name, class, age, error);
+       PrintBody(out, name, age, error);
        PrintTail(out);
      }
   }
