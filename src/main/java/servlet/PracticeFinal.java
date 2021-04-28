@@ -1,6 +1,7 @@
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
+import java.lang.*;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -40,8 +41,8 @@ public class PracticeFinal extends HttpServlet{
       }else if(operation.equals(CBA)){
          result = stringCPara + stringBPara + stringAPara;
       }else if(operation.equals(reverse)){
-         String temp = result.reverse();
-         result = temp;
+         StringBuilder temp = result;
+         result = temp.reverse();
       }
       
       response.setContentType("text/html");
