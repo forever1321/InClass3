@@ -42,7 +42,7 @@ public class PracticeFinal extends HttpServlet{
          result = stringCPara + stringBPara + stringAPara;
       }else if(operation.equals(reverse)){
          StringBuilder temp = result;
-         result = temp.reverse();
+         result = temp.reverse().toString();
       }
       
       response.setContentType("text/html");
