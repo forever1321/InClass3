@@ -21,6 +21,9 @@ public class PracticeFinal extends HttpServlet{
    
 
    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+      
+      HttpSession session = request.getSession();
+      
       String result = "";
       String operation = request.getParameter("Operation");
       String stringAPara = request.getParameter("StringA");
