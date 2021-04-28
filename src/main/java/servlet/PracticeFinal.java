@@ -105,7 +105,7 @@ public class PracticeFinal extends HttpServlet{
 
    //Override of the PrintBody method to print out a form without any information
    private void PrintBody(PrintWriter out){
-      PrintBody(out, "", "", "", "");
+      PrintBody(out, "", "", "", "", "");
    }
 
    private void PrintTail(PrintWriter out){
