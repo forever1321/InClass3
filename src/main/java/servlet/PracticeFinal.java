@@ -41,7 +41,8 @@ public class PracticeFinal extends HttpServlet{
       }else if(operation.equals(CBA)){
          result = stringCPara + stringBPara + stringAPara;
       }else if(operation.equals(reverse)){
-         StringBuilder temp = result;
+         StringBuilder temp = new StringBuilder();
+         temp.append(result);
          result = temp.reverse().toString();
       }
       
