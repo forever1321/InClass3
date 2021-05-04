@@ -130,6 +130,7 @@ public class FinalWeb extends HttpServlet{
    private int standardDeviation(ArrayList<Integer> list){
       int result = 0;
       int numerator = 0;
+      Double squareRoot = 0;
       int meanList = mean(list);
       int sizeList = list.size() - 1;
       for(int i = 0; i < list.size(); i++){
@@ -137,7 +138,10 @@ public class FinalWeb extends HttpServlet{
          diff *= diff;
          numerator += diff;
       }
-      result = Math.sqrt(numerator / sizeList);
+      result = numerator / sizeList;
+      squareRoot = new Double(result);
+      squareRoot = Math.sqrt(squareRoot);
+      result = new Integer(squareRoot);
       return result;
    }
    
