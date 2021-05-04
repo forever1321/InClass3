@@ -27,6 +27,12 @@ public class FinalWeb extends HttpServlet{
             int addingIn = new Integer(s);
             this.list.add(addingIn);       
          }
+         
+         PrintHead(out);
+         PrintBody(out, result, warning);
+         PrintTail(out);
+
+         return;
       }
       
       if(this.list.size() == 0){
