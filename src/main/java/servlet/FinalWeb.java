@@ -62,7 +62,7 @@ public class FinalWeb extends HttpServlet{
                break;
             case "Standard Deviation":
                stand = standardDeviation(this.list);
-               resultString = Integer.toString(stand);
+               resultString = Double.toString(stand);
                break;
              
          }
