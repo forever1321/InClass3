@@ -74,7 +74,7 @@ public class PracticeFinal extends HttpServlet{
       out.println("</head>");
    }
 
-   private void PrintBody(PrintWriter out, String stringA, String stringB, String stringC, String seperator, String result){
+   private void PrintBody(PrintWriter out, String result){
       out.println("<body>");
       if(!result.isEmpty()){
          out.println("<p>Concat String: <b>" + result + "</b></p>");
