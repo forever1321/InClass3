@@ -21,19 +21,12 @@ public class FinalWeb extends HttpServlet{
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       
-      if(operation.equals("Submit")){
-         this.list = new ArrayList<Integer>();
-         for(String s : input.split(" ")){
-            int addingIn = new Integer(s);
-            this.list.add(addingIn);       
-         }
-         
-         PrintHead(out);
-         PrintBody(out, result, warning);
-         PrintTail(out);
-
-         return;
-      }
+      
+     this.list = new ArrayList<Integer>();
+     for(String s : input.split(" ")){
+         int addingIn = new Integer(s);
+         this.list.add(addingIn);       
+     }
       
       if(this.list.size() == 0){
          warning = "You must add in numbers!";
