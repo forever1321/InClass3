@@ -13,7 +13,7 @@ public class FinalWeb extends HttpServlet{
    
    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
       int result = 0;
-      String resultString = 0;
+      String resultString = "";
       String warning = "";
       String operation = request.getParameter("Operation");
       String input = request.getParameter("Input");
@@ -75,7 +75,7 @@ public class FinalWeb extends HttpServlet{
                   }
                }   
          }
-         resultString = result.toString();
+         resultString = Integer.toString(result);
       }
       
       PrintHead(out);
