@@ -32,7 +32,7 @@ public class FinalWeb extends HttpServlet{
       if(this.list.size() == 0){
          warning = "You must add in numbers!";
       }else{
-         if(removeDuplicates != null){
+         /*if(removeDuplicates != null){
             replacementList = new ArrayList<Integer>();
             replacementList = this.list;
             for(int i = 0; i < this.list.size(); i++){
@@ -42,7 +42,7 @@ public class FinalWeb extends HttpServlet{
                   }
                }
             }
-         }
+         }*/
          switch(operation){
             case "Mean":
                int sum = 0;
