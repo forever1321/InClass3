@@ -124,20 +124,18 @@ public class FinalWeb extends HttpServlet{
    }
    
    private Double standardDeviation(ArrayList<Integer> list){
-      int result = 0;
-      int numerator = 0;
-      Double squareRoot = 0.0;
-      int meanList = mean(list);
+      Double result = 0.0;
+      Double numerator = 0.0;
+      Double meanList = mean(list);
       int sizeList = list.size() - 1;
       for(int i = 0; i < list.size(); i++){
-         int diff = list.get(i) - meanList;
+         Double diff = list.get(i) - meanList;
          diff *= diff;
          numerator += diff;
       }
       result = numerator / sizeList;
-      squareRoot = new Double(result);
-      squareRoot = Math.sqrt(squareRoot);
-      return squareRoot;
+      result = Math.sqrt(result);
+      return result;
    }
    
    private ArrayList<Integer> removeDuplicates(ArrayList<Integer> list){
