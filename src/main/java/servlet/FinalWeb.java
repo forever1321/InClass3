@@ -52,7 +52,7 @@ public class FinalWeb extends HttpServlet{
                resultString = Integer.toString(result);
                break;
             case "Mode":
-               ArrayList<Integer> modding = new ArrayList<Integer>;
+               ArrayList<Integer> modding = new ArrayList<Integer>();
                modding = mode(this.list);
                for(int i : modding){
                   String insertHere = Integer.toString(i);
@@ -98,7 +98,7 @@ public class FinalWeb extends HttpServlet{
    
    private ArrayList<Integer> mode(ArrayList<Integer> list){
       int maxCount = 0;
-      ArrayList<Integer> result = new ArrayList<Integer>;
+      ArrayList<Integer> result = new ArrayList<Integer>();
       for(int i = 0; i < list.size(); i++){
          int count = 0;
          for(int j = 0; j < list.size(); j++){
