@@ -52,7 +52,7 @@ public class PracticeFinal extends HttpServlet{
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       PrintHead(out);
-      PrintBody(out, stringAPara, stringBPara, stringCPara, seperatorPara, result);
+      PrintBody(out, result);
       PrintTail(out);
    }
 
@@ -62,7 +62,7 @@ public class PracticeFinal extends HttpServlet{
       PrintWriter out = response.getWriter();
    
       PrintHead(out);
-      PrintBody(out);
+      PrintBody(out, "");
       PrintTail(out);
    }
 
@@ -82,14 +82,14 @@ public class PracticeFinal extends HttpServlet{
       out.println(" <table>");
       out.println("  <tr>");
       out.println("   <td>String A:");
-      out.println("   <td><input type=\"text\" name=\"StringA\" value=\"" + stringA + "\" size=15>");
+      out.println("   <td><input type=\"text\" name=\"StringA\" size=15>");
       out.println("  </tr>");
       out.println("  <tr>");
       out.println("   <td>String B:");
-      out.println("   <td><input type=\"text\" name=\"StringB\" value=\"" + stringB + "\" size=15>");
+      out.println("   <td><input type=\"text\" name=\"StringB\" size=15>");
       out.println("  </tr>");
       out.println("   <td>String C:");
-      out.println("   <td><input type=\"text\" name=\"StringC\" value=\"" + stringC + "\" size=15>");
+      out.println("   <td><input type=\"text\" name=\"StringC\" value=\" size=15>");
       out.println("  </tr>");
       out.println("  <tr>");
       out.println("   <td>Sepearator:");
@@ -110,7 +110,7 @@ public class PracticeFinal extends HttpServlet{
 
    //Override of the PrintBody method to print out a form without any information
    private void PrintBody(PrintWriter out){
-      PrintBody(out, "", "", "", "", "");
+      PrintBody(out, "");
    }
 
    private void PrintTail(PrintWriter out){
