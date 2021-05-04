@@ -141,7 +141,7 @@ public class FinalWeb extends HttpServlet{
       result = numerator / sizeList;
       squareRoot = new Double(result);
       squareRoot = Math.sqrt(squareRoot);
-      result = new Integer(squareRoot);
+      result = (int)squareRoot;
       return result;
    }
    
