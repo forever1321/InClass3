@@ -20,7 +20,7 @@ import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "PersistenceFile", urlPatterns = {"/file"})
 public class PersistenceFile extends HttpServlet{
-  static enum Data {AGE, NAME};
+  static enum Data {AGE, CLASSNAME, NAME};
   static String RESOURCE_FILE = "entries.txt";
   static final String VALUE_SEPARATOR = ";";
 
@@ -44,6 +44,7 @@ public class PersistenceFile extends HttpServlet{
      throws ServletException, IOException
   {
      String name = request.getParameter(Data.NAME.name());
+     String className = request.getParameter(Data.CLASSNAME.name());
      String age = request.getParameter(Data.AGE.name());
 
      String error = "";
@@ -51,6 +52,11 @@ public class PersistenceFile extends HttpServlet{
        error= "<li>Name is required</li>";
        name = "";
      }
+    
+    if(className == null){
+      error = "<li>Class name is required</li>";
+      className = "";
+    }
 
      if(age == null){
        error+= "<li>Age is required.<li>";
@@ -87,7 +93,7 @@ public class PersistenceFile extends HttpServlet{
        printTail(out);
      }else{
        printHead(out);
-       printBody(out, name, age, error);
+       printBody(out, name, className, age, error);
        printTail(out);
      }
   }
@@ -102,7 +108,7 @@ public class PersistenceFile extends HttpServlet{
      response.setContentType("text/html");
      PrintWriter out = response.getWriter();
      printHead(out);
-     printBody(out, "", "", "");
+     printBody(out, "", "", "", "");
      printTail(out);
   }
 
@@ -128,7 +134,7 @@ public class PersistenceFile extends HttpServlet{
    *  Prints the <BODY> of the HTML page
   ********************************************************* */
   private void printBody (
-    PrintWriter out, String name, String age, String error){
+    PrintWriter out, String name, String className, String age, String error){
      out.println("<body onLoad=\"setFocus()\">");
      out.println("<p>");
      out.println(
@@ -151,6 +157,11 @@ public class PersistenceFile extends HttpServlet{
      out.println("  <tr>");
      out.println("   <td>Name:</td>");
      out.println("   <td><input type=\"text\" name=\""+Data.NAME.name()
+      +"\" value=\""+name+"\" size=30 required></td>");
+     out.println("  </tr>");
+     out.println("  <tr>");
+     out.println("   <td>ClassName:</td>");
+     out.println("   <td><input type=\"text\" name=\""+Data.CLASSNAME.name()
       +"\" value=\""+name+"\" size=30 required></td>");
      out.println("  </tr>");
      out.println("  <tr>");
@@ -185,6 +196,7 @@ public class PersistenceFile extends HttpServlet{
     try {
         out.println("  <tr>");
         out.println("   <th>Name</th>");
+        out.println("   <th>ClassName</th>");
         out.println("   <th>Age</th>");
         out.println("  </tr>");
         File file = new File(resourcePath);
