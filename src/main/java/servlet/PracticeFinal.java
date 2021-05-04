@@ -93,7 +93,7 @@ public class PracticeFinal extends HttpServlet{
       out.println("  </tr>");
       out.println("  <tr>");
       out.println("   <td>Sepearator:");
-      out.println("   <td><input type=\"text\" name=\"Seperator\" value=\"" + seperator + "\" size=15>");
+      out.println("   <td><input type=\"text\" name=\"Seperator\" value=\" size=15>");
       out.println("  </tr>");
       out.println(" </table>");
       out.println(" <br>");
