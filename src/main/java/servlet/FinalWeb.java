@@ -82,6 +82,7 @@ public class FinalWeb extends HttpServlet{
          sum += list.get(i);
       }
       result = sum / list.size();
+      return result;
    }
    
    private int median(ArrayList<Integer> list){
