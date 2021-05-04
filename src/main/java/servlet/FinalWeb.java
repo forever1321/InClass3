@@ -54,10 +54,16 @@ public class FinalWeb extends HttpServlet{
             case "Mode":
                ArrayList<Integer> modding = new ArrayList<Integer>();
                modding = mode(this.list);
-               for(int i : modding){
-                  String insertHere = Integer.toString(i);
+               for(int i = 0; i < modding.size(); i++){
+                  String insertHere = Integer.toString(modding.get(i));
                   resultString += insertHere + " ";
-               }  
+               } 
+               break;
+            case "Standard Deviation":
+               result = standardDeviation(this.list);
+               resultString = Integer.toString(result);
+               break;
+             
          }
          //resultString = Integer.toString(result);
       }
@@ -118,6 +124,20 @@ public class FinalWeb extends HttpServlet{
             }
          }
       }  
+      return result;
+   }
+   
+   private int standardDeviation(ArrayList<Integer> list){
+      int result = 0;
+      int numerator = 0;
+      int meanList = mean(list);
+      int sizeList = list.size() - 1;
+      for(int i = 0; i < list.size(); i++){
+         int diff = list.get(i) - meanList;
+         diff *= diff;
+         numerator += diff;
+      }
+      result = Math.sqrt(numerator / sizeList);
       return result;
    }
    
