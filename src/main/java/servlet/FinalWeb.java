@@ -18,6 +18,7 @@ public class FinalWeb extends HttpServlet{
       String warning = "";
       String operation = request.getParameter("Operation");
       String input = request.getParameter("Input");
+      String[] removeDuplicates = request.getParameterValues("removeDuplicates");
       
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
@@ -32,21 +33,13 @@ public class FinalWeb extends HttpServlet{
       if(this.list.size() == 0){
          warning = "You must add in numbers!";
       }else{
-         /*if(removeDuplicates != null){
-            replacementList = new ArrayList<Integer>();
-            replacementList = this.list;
-            for(int i = 0; i < this.list.size(); i++){
-               for(int j = 0; j < replacementList.size(); j++){
-                  if(this.list.get(i) == replacementList.get(j) && i != j){
-                     this.list.remove(i);
-                  }
-               }
-            }
-         }*/
+         if(removeDuplicates != null){
+            this.list = removeDuplicates(this.list);
+         }
          switch(operation){
             case "Mean":
-               result = mean(this.list);
-               resultString = Integer.toString(result);
+               stand = mean(this.list);
+               resultString = Double.toString(stand);
                break;
             case "Median":
                result = median(this.list);
@@ -82,13 +75,15 @@ public class FinalWeb extends HttpServlet{
       PrintTail(out);
    }
    
-   private int mean(ArrayList<Integer> list){
+   private Double mean(ArrayList<Integer> list){
       int sum = 0;
-      int result = 0;
+      Double result = 0.0;
       for(int i = 0; i < list.size(); i++){
          sum += list.get(i);
       }
-      result = sum / list.size();
+      Double summa = new Double(sum);
+      Double sizeList = new Double(list.size());
+      result = summa / sizeList;
       return result;
    }
    
@@ -143,6 +138,16 @@ public class FinalWeb extends HttpServlet{
       squareRoot = new Double(result);
       squareRoot = Math.sqrt(squareRoot);
       return squareRoot;
+   }
+   
+   private ArrayList<Integer> removeDuplicates(ArrayList<Integer> list){
+      ArrayList<Integer> result = new ArrayList<Integer>();
+      for(int i = 0; i < list.size(); i++){
+         if(result.contains(list.get(i)) == false){
+            result.add(list.get(i));
+         }
+      }
+      return result;
    }
    
    private void PrintHead(PrintWriter out){
