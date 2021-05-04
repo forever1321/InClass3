@@ -87,6 +87,7 @@ public class FinalWeb extends HttpServlet{
    
    private int median(ArrayList<Integer> list){
       int result = 0;
+      Collections.sort(list);
       if(this.list.size() % 2 == 1){
          result = list.get((list.size() + 1) / 2 - 1);
       }else{
@@ -112,7 +113,9 @@ public class FinalWeb extends HttpServlet{
             maxCount = count;
             result.add(list.get(i));
          }else if(count == maxCount){
-            result.add(list.get(i));
+            if(result.contains(list.get(i)) == false){
+               result.add(list.get(i));
+            }
          }
       }  
       return result;
