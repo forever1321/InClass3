@@ -22,11 +22,11 @@ public class FinalWeb extends HttpServlet{
       PrintWriter out = response.getWriter();
       
       
-     this.list = new ArrayList<Integer>();
-     for(String s : input.split(" ")){
+      this.list = new ArrayList<Integer>();
+      for(String s : input.split(" ")){
          int addingIn = new Integer(s);
          this.list.add(addingIn);       
-     }
+      }
       
       if(this.list.size() == 0){
          warning = "You must add in numbers!";
@@ -44,37 +44,22 @@ public class FinalWeb extends HttpServlet{
          }*/
          switch(operation){
             case "Mean":
-               int sum = 0;
-               for(int i = 0; i < this.list.size(); i++){
-                  sum += this.list.get(i);
-               }
-               result = sum / this.list.size();
+               result = mean(this.list);
+               resultString = Integer.toString(result);
                break;
             case "Median":
-               if(this.list.size() % 2 == 1){
-                  result = this.list.get((this.list.size() + 1) / 2 - 1);
-               }else{
-                  int lower = this.list.get(this.list.size() / 2 - 1);
-                  int upper = this.list.get(this.list.size() / 2);
-                  result = (lower + upper) / 2;
-               }
+               result = median(this.list);
+               resultString = Integer.toString(result);
                break;
             case "Mode":
-               int maxCount = 0;
-               for(int i = 0; i < this.list.size(); i++){
-                  int count = 0;
-                  for(int j = 0; j < this.list.size(); j++){
-                     if(this.list.get(i) == this.list.get(j)){
-                        count++;
-                     }
-                  }
-                  if(count > maxCount){
-                     maxCount = count;
-                     result = this.list.get(i);
-                  }
-               }   
+               ArrayList<Integer> modding = new ArrayList<Integer>;
+               modding = mode(this.list);
+               for(int i : modding){
+                  String insertHere = Integer.toString(i);
+                  resultString += insertHere + " ";
+               }  
          }
-         resultString = Integer.toString(result);
+         //resultString = Integer.toString(result);
       }
       
       PrintHead(out);
@@ -90,6 +75,48 @@ public class FinalWeb extends HttpServlet{
       PrintTail(out);
    }
    
+   private int mean(ArrayList<Integer> list){
+      int sum = 0;
+      int result = 0;
+      for(int i = 0; i < list.size(); i++){
+         sum += list.get(i);
+      }
+      result = sum / list.size();
+   }
+   
+   private int median(ArrayList<Integer> list){
+      int result = 0;
+      if(this.list.size() % 2 == 1){
+         result = list.get((list.size() + 1) / 2 - 1);
+      }else{
+         int lower = list.get(list.size() / 2 - 1);
+         int upper = list.get(list.size() / 2);
+         result = (lower + upper) / 2;
+      }
+      return result;
+   }
+   
+   private ArrayList<Integer> mode(ArrayList<Integer> list){
+      int maxCount = 0;
+      ArrayList<Integer> result = new ArrayList<Integer>;
+      for(int i = 0; i < list.size(); i++){
+         int count = 0;
+         for(int j = 0; j < list.size(); j++){
+            if(this.list.get(i) == list.get(j)){
+               count++;
+            }
+         }
+         if(count > maxCount){
+            result.clear();
+            maxCount = count;
+            result.add(list.get(i));
+         }else if(count == maxCount){
+            result.add(list.get(i));
+         }
+      }  
+      return result;
+   }
+   
    private void PrintHead(PrintWriter out){
       out.println("<html>");
       out.println("");
@@ -103,9 +130,9 @@ public class FinalWeb extends HttpServlet{
       out.println("<h>Shashwat Bhushan G-Number: G01134256</h>");
       out.println("<p>Input a list of integers into the space provided, and choose which average you want to see.</p>");
    
-   if (warning != null) {
-      out.println("<p>" + warning + "</p>");
-   }
+      if (warning != null) {
+         out.println("<p>" + warning + "</p>");
+      }
    
       out.println("<fieldset>");
       out.println("  <form name = \"Form\"> ");
