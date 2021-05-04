@@ -13,6 +13,7 @@ public class FinalWeb extends HttpServlet{
    
    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
       int result = 0;
+      Double stand = 0.0;
       String resultString = "";
       String warning = "";
       String operation = request.getParameter("Operation");
@@ -60,8 +61,8 @@ public class FinalWeb extends HttpServlet{
                } 
                break;
             case "Standard Deviation":
-               result = standardDeviation(this.list);
-               resultString = Integer.toString(result);
+               stand = standardDeviation(this.list);
+               resultString = Integer.toString(stand);
                break;
              
          }
@@ -127,10 +128,10 @@ public class FinalWeb extends HttpServlet{
       return result;
    }
    
-   private int standardDeviation(ArrayList<Integer> list){
+   private Double standardDeviation(ArrayList<Integer> list){
       int result = 0;
       int numerator = 0;
-      Double squareRoot = 0;
+      Double squareRoot = 0.0;
       int meanList = mean(list);
       int sizeList = list.size() - 1;
       for(int i = 0; i < list.size(); i++){
@@ -141,8 +142,7 @@ public class FinalWeb extends HttpServlet{
       result = numerator / sizeList;
       squareRoot = new Double(result);
       squareRoot = Math.sqrt(squareRoot);
-      result = (int)squareRoot;
-      return result;
+      return squareRoot;
    }
    
    private void PrintHead(PrintWriter out){
