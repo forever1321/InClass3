@@ -178,6 +178,9 @@ public class FinalWeb extends HttpServlet{
       out.println("     <td>");
       out.println("        <input type = \"submit\" value = \"Mode\" formmethod = \"post\" name=\"Operation\">");
       out.println("     </td>"); 
+      out.println("     <td>");
+      out.println("        <input type = \"submit\" value = \"Standard Deviation\" formmethod = \"post\" name=\"Operation\">");
+      out.println("     </td>");
       
       out.println("  </tr>");
       out.println("  <tr>");
