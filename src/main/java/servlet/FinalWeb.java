@@ -9,10 +9,11 @@ import javax.servlet.annotation.WebServlet;
 @WebServlet(name = "FinalShashwatBhushan", urlPatterns = {"/FinalsShashwatBhushan"})
 public class FinalWeb extends HttpServlet{
    
-   
+   ArrayList <Integer> list = new ArrayList<Integer>();
    
    public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
       int result = 0;
+      String resultString = 0;
       String warning = "";
       String operation = request.getParameter("Operation");
       String input = request.getParameter("Input");
@@ -74,10 +75,11 @@ public class FinalWeb extends HttpServlet{
                   }
                }   
          }
+         resultString = result.toString();
       }
       
       PrintHead(out);
-      PrintBody(out, result, warning);
+      PrintBody(out, resultString, warning);
       PrintTail(out);
    }
    
@@ -97,7 +99,7 @@ public class FinalWeb extends HttpServlet{
       out.println("</head>");
    }
    
-   private void PrintBody(PrintWriter out, int result, String warning){
+   private void PrintBody(PrintWriter out, String result, String warning){
       out.println("<body>");
       out.println("<h>Shashwat Bhushan G-Number: G01134256</h>");
       out.println("<p>Input a list of integers into the space provided, and choose which average you want to see.</p>");
